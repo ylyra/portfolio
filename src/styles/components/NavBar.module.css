@@ -1,0 +1,114 @@
+.navContainer {
+  background: #13111b;
+
+  height: 80px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  position: fixed;
+  z-index: 10;
+}
+
+.navContainer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navContainer .logo {
+  margin-top: 5px;
+}
+
+.navContainer .mobileMenu {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-right: 1.12rem;
+  color: var(--blue);
+  display: none;
+}
+
+.navContainer a.navLink.closeMobile {
+  background-image: unset !important;
+  text-align: end;
+  font-size: 2rem;
+  color: #d93535 !important;
+  display: none;
+}
+
+.navContainer .navBar {
+  display: flex;
+  margin: 0;
+}
+
+.navContainer .navBar .navItem {
+  list-style: none;
+}
+
+.navContainer .navBar .navItem .navLink {
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.56rem 1.12rem;
+  transition: 0.2s ease-in-out;
+}
+
+.navContainer .navBar .navItem .navLink:hover {
+  color: var(--blue);
+}
+
+@media (max-width: 600px) {
+  .navContainer .mobileMenu {
+    display: block !important;
+  }
+
+  .navContainer .navBar {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    width: 160px !important;
+    background: #212121 !important;
+    padding-top: 20px !important;
+    transition: right 0.2s ease-in-out !important;
+  }
+
+  .navContainer .navBar.active {
+    right: 0% !important;
+    width: 65% !important;
+    padding: 10px !important;
+  }
+
+  .navContainer .navBar:before {
+    content: "" !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    left: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    display: none !important;
+    z-index: -1 !important;
+    top: 0 !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease-in-out !important;
+  }
+
+  .navContainer .navBar.active:before {
+    display: block !important;
+    opacity: 1 !important;
+  }
+
+  .navContainer .navBar .navItem {
+    display: contents !important;
+  }
+
+  .navContainer a.navLink.closeMobile {
+    display: block !important;
+  }
+
+  .navContainer .navBar .navItem .navLink {
+    padding: 20px !important;
+  }
+}

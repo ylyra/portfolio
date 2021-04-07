@@ -1,0 +1,61 @@
+section.topContainer {
+  background: url("../images/banner.png") center center no-repeat;
+  padding: 20px 0px;
+  padding-top: 80px;
+  background-size: cover;
+}
+
+section.topContainer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+section.topContainer .title {
+  max-width: 720px;
+  text-align: center;
+}
+
+section.topContainer .works {
+  cursor: grab;
+  overflow: auto;
+
+  padding-bottom: 10px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #718096 #edf2f7;
+}
+
+section.topContainer .works::-webkit-scrollbar {
+  width: 0.1rem;
+  height: 10px;
+}
+
+section.topContainer .works::-webkit-scrollbar-track {
+  background-color: #edf2f7;
+}
+
+section.topContainer .works::-webkit-scrollbar-thumb {
+  background-color: #718096;
+}
+
+section.topContainer .works a {
+  min-width: fit-content;
+}
+
+@media (max-width: 600px) {
+  section.topContainer .title {
+    font-size: 1.34rem;
+    font-weight: 900 !important;
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  section.topContainer {
+    padding: 20px !important;
+    padding-top: 80px !important;
+  }
+}
