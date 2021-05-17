@@ -10,7 +10,7 @@ import api from '../services/api'
 
 
 interface PropsData {
-  allWorks: Array<WorkData>
+  allWorks: WorkData[];
 }
 
 export default function Home(props: PropsData) {
