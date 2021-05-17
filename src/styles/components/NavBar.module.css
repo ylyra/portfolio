@@ -59,7 +59,7 @@
 }
 
 .navContainer .navBar .navItem .navLink.active {
-  background-size: 100% 5%;
+  background-size: 100% 5% !important;
 }
 
 @media (max-width: 600px) {
