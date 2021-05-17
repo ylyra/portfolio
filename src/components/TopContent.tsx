@@ -1,30 +1,42 @@
-import { useContext } from 'react';
-import { WorksContext } from '../contexts/WorksContext';
+import { useContext } from "react";
+import { Link } from "react-scroll";
 
-import styles from '../styles/components/TopContent.module.css';
+import { WorksContext } from "../contexts/WorksContext";
+
+import styles from "../styles/components/TopContent.module.css";
 
 export function TopContent() {
-  const { showWork, recentsWorks } = useContext(WorksContext)
+  const { showWork, recentsWorks } = useContext(WorksContext);
 
   return (
-    <section id='top' className={styles.topContainer}>
+    <section id="top" className={styles.topContainer}>
       <div className={`container ${styles.container}`}>
         <h1 className="title">Veja alguns dos meus projetos!</h1>
 
         <div className={`works ${styles.works}`}>
-          {recentsWorks.map(recentWork => {
+          {recentsWorks.map((recentWork) => {
             return (
-              <div 
+              <Link
+                to="see-work"
+                className="work"
+                style={{ backgroundImage: `url(${recentWork.image_small})` }}
+                smooth={true}
+                offset={-120}
+                isDynamic
+                duration={500}
+                onClick={() => showWork(recentWork.id)}
                 key={`topWork-${recentWork.id}`}
-                className='work' 
-                onClick={() => showWork(recentWork.id)} 
-                style={{backgroundImage: `url(${recentWork.image_small})`}} />           
-            )
+              />
+            );
           })}
-          <a href="#works" rel="noopener">Veja mais &gt;</a>
+          <a href="#works" rel="noopener">
+            Veja mais &gt;
+          </a>
         </div>
 
-        <a href="#contact" rel="noopener" className="btn">Contate-me</a>
+        <a href="#contact" rel="noopener" className="btn">
+          Contate-me
+        </a>
       </div>
     </section>
   );

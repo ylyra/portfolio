@@ -51,10 +51,15 @@
   text-decoration: none;
   padding: 0.56rem 1.12rem;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .navContainer .navBar .navItem .navLink:hover {
   color: var(--blue);
+}
+
+.navContainer .navBar .navItem .navLink.active {
+  background-size: 100% 5%;
 }
 
 @media (max-width: 600px) {

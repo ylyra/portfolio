@@ -17,8 +17,9 @@ section.worksContainer .seeWork.active {
 }
 
 section.worksContainer .seeWork h3 {
-  font-size: 1.34rem;
+  font-size: 2rem;
   font-weight: 900;
+  text-align: center;
 }
 
 section.worksContainer .seeWork .infos {

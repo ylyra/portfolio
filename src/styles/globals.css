@@ -1,18 +1,19 @@
 :root {
-  --primary: #201b2d;
-  --secundary: #191622;
+  --primary: #282454;
+  --secundary: #131128;
+
   --green: #08d586;
   --red: #d93535;
-  --blue: #6c63ff;
-  --white: #e1e1e6;
+  --blue: #6639e4;
+  --white: #e0dff1;
 
-  --color-purple: #6633cc;
+  /*--color-purple: #6633cc;
   --color-purpleDark: #5a4b81;
   --bg-lightest: #252131;
   --bg-lighter: #201b2d;
   --bg-dark: #191622;
   --bg-darker: #15121e;
-  --bg-darkest: #131111;
+  --bg-darkest: #131111;*/
 }
 
 * {
@@ -317,20 +318,6 @@ a {
   display: flex;
 }
 
-a:not(.btn):not(.social):not(.mobile-menu):not(.logo) {
-  color: var(--blue);
-  text-decoration: none;
-  background-image: linear-gradient(to right, var(--blue) 0%, var(--blue) 100%);
-  background-size: 0px 20%;
-  background-position: 0px 95%;
-  transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
-  background-repeat: no-repeat;
-}
-
-a:not(.btn):not(.social):not(.mobile-menu):not(.logo):hover {
-  background-size: 100% 20%;
-}
-
 .container {
   max-width: 1100px;
   width: 100%;
@@ -338,49 +325,37 @@ a:not(.btn):not(.social):not(.mobile-menu):not(.logo):hover {
   margin: 0 auto;
 }
 
-.btn {
+a:not(.btn):not(.social):not(.mobile-menu):not(.logo):not(.work) {
   color: var(--blue);
+  text-decoration: none;
+  background-image: linear-gradient(to right, var(--blue) 0%, var(--blue) 100%);
+  background-size: 0px 5%;
+  background-position: 0px 95%;
+  transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  background-repeat: no-repeat;
+}
+
+a:not(.btn):not(.social):not(.mobile-menu):not(.logo):not(.work):hover {
+  background-size: 100% 5%;
+}
+
+.btn {
+  color: var(--white);
   text-decoration: none;
 
   padding: 12px 34px;
 
   border: 1px solid var(--blue);
-  background: transparent;
+  background: var(--blue);
+  border-radius: 3px;
 
   position: relative;
   display: inherit;
   transition: all 0.35s ease-in-out;
-  z-index: 2;
 }
 
 .btn:hover {
-  color: var(--white);
-}
-
-.btn:before,
-.btn:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 100%;
-  background: var(--blue);
-  transition: all 0.35s ease-in-out;
-  z-index: -1;
-}
-
-.btn:before {
-  top: 0;
-  left: 0;
-}
-
-.btn:after {
-  top: 0;
-  right: 0;
-}
-
-.btn:hover:before,
-.btn:hover:after {
-  width: 50%;
+  filter: brightness(0.9);
 }
 
 .title {

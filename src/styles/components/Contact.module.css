@@ -66,7 +66,7 @@ section.contactContainer form .formButtons {
 }
 
 section.contactContainer form .formButtons .btn {
-  font-size: 0.78rem;
+  font-size: 1.15rem;
   width: 190px;
   height: 40px;
 
@@ -76,48 +76,20 @@ section.contactContainer form .formButtons .btn {
 }
 
 section.contactContainer form .formButtons .btn.green {
-  color: var(--green);
+  background: var(--green);
   border: 1px solid var(--green);
 }
 
-section.contactContainer form .formButtons .btn.green:hover {
-  color: var(--white);
-}
-
-section.contactContainer form .formButtons .btn.green:before,
-section.contactContainer form .formButtons .btn.green:after {
-  background: var(--green);
-}
-
 .btn.red {
-  color: var(--red);
+  background: var(--red);
   border: 1px solid var(--red);
 }
 
-.btn.red:hover {
-  color: var(--white);
-}
-
-.btn.red:before,
-.btn.red:after {
-  background: var(--red);
-}
-
 .btn.sending {
-  color: var(--primary);
+  background: var(--primary);
   border: 1px solid var(--white);
   background: var(--white);
   cursor: not-allowed;
-}
-
-.btn.sending:hover {
-  color: var(--primary);
-  border: 1px solid var(--white);
-}
-
-.btn.sending:before,
-.btn.sending:after {
-  background: var(--white);
 }
 
 section.contactContainer .contactFormMessage {
