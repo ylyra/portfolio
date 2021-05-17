@@ -99,7 +99,7 @@ export function Contact() {
                     className="form-control"
                     value={phone}
                     placeholder="Digite o telefone para contato por WhatsApp"
-                    onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
+                    onChange={(event: ChangeEvent<HTMLInputElement>) =>
                       setPhone(event.target.value)
                     }
                   />
