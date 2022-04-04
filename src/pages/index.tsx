@@ -63,7 +63,7 @@ export default function Home(props: PropsData) {
 export async function getStaticProps() {
   let allWorks = [];
   try {
-    const { data } = await axios.get("/api/trabalhos");
+    const { data } = await api.get("/api/trabalhos");
     allWorks = data;
   } catch {}
 
