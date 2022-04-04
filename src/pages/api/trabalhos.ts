@@ -1,11 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
 
-import api from '../../services/api'
+import allWorks from "../../lib/allWorks.json";
 
-export default async function Contact(req: NextApiRequest, res: NextApiResponse) {
-  const { data } = await api.get('https://yanlyraportfolio.000webhostapp.com/ajax/trabalhos');
+export default async function Contact(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  res.setHeader("Cache-Control", "s-maxage=86400, stale-while-revalidate");
 
-  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate')
-
-  res.json(data)
+  res.json(allWorks);
 }
