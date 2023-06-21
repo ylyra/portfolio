@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { CommandBar } from './Command'
 
 const items = ['About', 'Projects', 'Uses']
 
@@ -34,6 +35,7 @@ const navItem = cva({
 })
 
 export const Nav = () => {
+  const [isCommnadBarOpen, setIsCommnadBarOpen] = useState(false)
   const [currentHovered, setCurrentHovered] = useState('')
   const pathname = usePathname()
 
@@ -75,6 +77,12 @@ export const Nav = () => {
             </Link>
           </li>
         ))}
+        <li>
+          <CommandBar
+            open={isCommnadBarOpen}
+            onOpenChange={setIsCommnadBarOpen}
+          />
+        </li>
       </styled.ul>
     </nav>
   )

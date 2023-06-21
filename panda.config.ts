@@ -55,6 +55,20 @@ export default defineConfig({
   globalCss,
 
   theme: {
+    extend: {
+      keyframes: {
+        slide: {
+          '0%, 100%': {
+            left: '-2%',
+            transform: 'translateX(0)',
+          },
+          '50%': {
+            left: '102%',
+            transform: 'translateX(-100%)',
+          },
+        },
+      },
+    },
     tokens: {
       colors: {
         purple: {
