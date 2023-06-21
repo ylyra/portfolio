@@ -5,6 +5,7 @@ import { styled } from '@/panda/jsx'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Command } from 'phosphor-react'
 import { useState } from 'react'
 import { CommandBar } from './Command'
 
@@ -12,7 +13,8 @@ const items = ['About', 'Projects', 'Uses']
 
 const navItem = cva({
   base: {
-    display: 'block',
+    display: 'flex',
+    alignItems: 'center',
     padding: '0.5rem 0.75rem',
     position: 'relative',
     fontSize: '1rem',
@@ -78,6 +80,12 @@ export const Nav = () => {
           </li>
         ))}
         <li>
+          <button
+            className={navItem()}
+            onClick={() => setIsCommnadBarOpen(!isCommnadBarOpen)}
+          >
+            <Command size={14} />K
+          </button>
           <CommandBar
             open={isCommnadBarOpen}
             onOpenChange={setIsCommnadBarOpen}

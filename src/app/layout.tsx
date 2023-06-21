@@ -1,5 +1,6 @@
 import { Container } from '@/components/Container'
 import { Header } from '@/layout/Header'
+import { Toaster } from 'react-hot-toast'
 import './index.css'
 
 export const metadata = {
@@ -18,6 +19,8 @@ export default function RootLayout({
         <Header />
 
         <Container>{children}</Container>
+
+        <Toaster position="bottom-right" />
       </body>
     </html>
   )

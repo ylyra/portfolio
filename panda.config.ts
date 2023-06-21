@@ -28,9 +28,17 @@ const globalCss = defineGlobalStyles({
     textDecoration: 'none',
   },
 
-  ':focus': {
-    outline: 'none',
-    boxShadow: '0 0 0 3px rgba(147, 197, 253, 0.75)',
+  'input, textarea, button, select': {
+    '&:focus': {
+      outline: 'none',
+      boxShadow: '0 0 0 3px rgba(147, 197, 253, 0.75)',
+    },
+  },
+
+  '[cmdk-overlay]': {
+    position: 'fixed',
+    inset: '0',
+    bg: 'rgba(0, 0, 0, 0.25)',
   },
 })
 

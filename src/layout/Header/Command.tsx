@@ -2,7 +2,9 @@
 
 import { css } from '@/panda/css'
 import { Command } from 'cmdk'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 
 interface Props {
   open: boolean
@@ -18,6 +20,7 @@ const dialog = css({
   w: '100%',
   bg: '#1c1c1c',
   borderRadius: 8,
+  border: '1px solid #FFFFFF1A',
   // backdropFilter: 'blur(8px)',
 
   '& [cmdk-group-heading]': {
@@ -37,13 +40,22 @@ const input = css({
 })
 
 const list = css({
-  maxH: 208,
+  maxH: 300,
   overflow: 'auto',
   overscrollBehavior: 'contain',
   scrollPaddingBlockEnd: 40,
   transition: '0.1s ease',
   transitionProperty: 'height',
   padding: '0 0.5rem 2.5rem',
+
+  '&::-webkit-scrollbar': {
+    width: 4,
+  },
+
+  '&::-webkit-scrollbar-thumb': {
+    bg: '#FFFFFF1A',
+    borderRadius: 4,
+  },
 })
 
 const group = css({
@@ -112,8 +124,99 @@ const searchAnimation = css({
   animation: 'slide 2s ease-in-out infinite',
 })
 
+const kbdContainer = css({
+  ml: 'auto',
+  display: 'flex',
+  alignItems: 'center',
+  gap: 4,
+
+  '& kbd': {
+    all: 'unset',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    bg: '#18181b',
+    color: '#a0a0a0',
+    borderRadius: 4,
+    width: 24,
+    height: 24,
+    fontSize: '0.75rem',
+  },
+})
+
 export function CommandBar({ onOpenChange, open }: Props) {
   const [loading] = useState(false)
+  const router = useRouter()
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href)
+    toast.success('Successfully toasted!')
+  }
+
+  const handleChangePage = (page: string) => {
+    try {
+      router.push(page)
+
+      onOpenChange(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const options = [
+    {
+      group: 'General',
+      items: [
+        {
+          label: 'Copy Link',
+          value: 'Copy Link',
+          onSelect: handleCopyLink,
+          shortcut: 'C',
+          ariaLabel: 'Copy Link',
+        },
+        {
+          label: 'Send Email',
+          value: 'Send Email',
+          onSelect: () => handleChangePage('/contact'),
+          shortcut: 'E',
+          ariaLabel: 'Contact Me via Email',
+        },
+      ],
+    },
+    {
+      group: 'Go To',
+      items: [
+        {
+          label: 'Home',
+          value: 'Home',
+          onSelect: () => handleChangePage('/'),
+          shortcut: 'GH',
+          ariaLabel: 'Go to Home Page',
+        },
+        {
+          label: 'About',
+          value: 'About',
+          onSelect: () => handleChangePage('/about'),
+          shortcut: 'GA',
+          ariaLabel: 'Go to About Page',
+        },
+        {
+          label: 'Projects',
+          value: 'Projects',
+          onSelect: () => handleChangePage('/projects'),
+          shortcut: 'GP',
+          ariaLabel: 'Go to Projects Page',
+        },
+        {
+          label: 'Uses',
+          value: 'Uses',
+          onSelect: () => handleChangePage('/uses'),
+          shortcut: 'GU',
+          ariaLabel: 'Go see what I use',
+        },
+      ],
+    },
+  ]
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -131,7 +234,10 @@ export function CommandBar({ onOpenChange, open }: Props) {
   return (
     <Command.Dialog className={dialog} open={open} onOpenChange={onOpenChange}>
       <div className={searchContainer}>
-        <Command.Input placeholder="Search…" className={input} />
+        <Command.Input
+          placeholder="Type your search here..."
+          className={input}
+        />
 
         {loading && <div className={searchAnimation} />}
       </div>
@@ -139,16 +245,32 @@ export function CommandBar({ onOpenChange, open }: Props) {
       <Command.List className={list}>
         <Command.Empty className={empty}>No results found.</Command.Empty>
 
-        <Command.Group className={group} heading="Fruits">
-          <Command.Item className={item}>Apple</Command.Item>
-          <Command.Item className={item}>Orange</Command.Item>
-          <Command.Item className={item}>Pear</Command.Item>
-          <Command.Item className={item}>Blueberry</Command.Item>
-        </Command.Group>
+        {options.map((groupProps) => (
+          <Command.Group
+            key={groupProps.group}
+            className={group}
+            heading={groupProps.group.toUpperCase()}
+          >
+            {groupProps.items.map((gItem) => (
+              <Command.Item
+                key={gItem.value}
+                className={item}
+                onSelect={gItem.onSelect}
+                aria-label={gItem.ariaLabel}
+              >
+                {gItem.label}
 
-        <Command.Group className={group} heading="Fishes">
-          <Command.Item className={item}>Fish</Command.Item>
-        </Command.Group>
+                {gItem.shortcut && (
+                  <div className={kbdContainer}>
+                    {gItem.shortcut.split('').map((key) => (
+                      <kbd key={key}>{key}</kbd>
+                    ))}
+                  </div>
+                )}
+              </Command.Item>
+            ))}
+          </Command.Group>
+        ))}
       </Command.List>
     </Command.Dialog>
   )
