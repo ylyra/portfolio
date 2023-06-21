@@ -1,3 +1,5 @@
+import { Container } from '@/components/Container'
+import { Header } from '@/layout/Header'
 import './index.css'
 
 export const metadata = {
@@ -12,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+
+        <Container>{children}</Container>
+      </body>
     </html>
   )
 }
