@@ -133,7 +133,7 @@ export function CommandBar({ onOpenChange, open }: Props) {
       <div className={searchContainer}>
         <Command.Input placeholder="Search…" className={input} />
 
-        {!loading && <div className={searchAnimation} />}
+        {loading && <div className={searchAnimation} />}
       </div>
 
       <Command.List className={list}>
