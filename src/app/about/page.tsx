@@ -1,3 +1,10 @@
+import { styled } from '@/panda/jsx'
+import { Career } from './components/Career'
+
 export default function About() {
-  return <h1>Hello About</h1>
+  return (
+    <styled.main>
+      <Career />
+    </styled.main>
+  )
 }

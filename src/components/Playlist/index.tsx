@@ -21,6 +21,7 @@ interface PlaylistItem {
       standard: PlaylistItemThumb
     }
     channelTitle: string
+    videoOwnerChannelTitle: string
   }
   contentDetails: {
     videoId: string
@@ -110,7 +111,7 @@ export const Playlist = async () => {
                 {item.snippet.title}
               </styled.span>
               <styled.span fontSize="0.75rem" color="gray.500">
-                {item.snippet.channelTitle}
+                {item.snippet.videoOwnerChannelTitle}
               </styled.span>
             </styled.a>
           </styled.li>

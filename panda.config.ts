@@ -13,7 +13,7 @@ const globalCss = defineGlobalStyles({
     cursor: 'pointer',
   },
 
-  'body, input, textarea, button': {
+  'body, input, textarea, button, *': {
     fontFamily: 'var(--font-primary)',
     fontSize: '18px',
     fontWeight: '400',
@@ -48,6 +48,17 @@ const globalCss = defineGlobalStyles({
   '::-webkit-scrollbar-thumb': {
     bg: '#FFFFFF1A',
     borderRadius: 4,
+  },
+
+  '.toast ': {
+    border: '1px solid #FFFFFF1A',
+    borderRadius: 4,
+
+    '[role="status"]': {
+      fontSize: '14px !important',
+      fontWeight: '500 !important',
+      color: 'gray.400 !important',
+    },
   },
 })
 

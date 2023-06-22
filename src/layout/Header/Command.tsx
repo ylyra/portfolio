@@ -141,7 +141,15 @@ export function CommandBar({ onOpenChange, open }: Props) {
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href)
-    toast.success('Successfully toasted!')
+    toast.success('Link copied to clipboard! You can now paste it anywhere.', {
+      style: {
+        background: '#18181b',
+        color: '#fff',
+        fontSize: '0.75rem',
+      },
+      duration: 300000,
+      className: 'toast',
+    })
   }
 
   const handleChangePage = (page: string) => {
