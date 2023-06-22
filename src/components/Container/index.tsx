@@ -7,7 +7,7 @@ export const Container = ({
   ...args
 }: PropsWithChildren<JsxStyleProps>) => {
   return (
-    <styled.div px={16} maxW={790} mx="auto" {...args}>
+    <styled.div px={16} maxW={790} mx="auto" w="100%" {...args}>
       {children}
     </styled.div>
   )

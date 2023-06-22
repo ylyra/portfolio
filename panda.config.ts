@@ -40,6 +40,15 @@ const globalCss = defineGlobalStyles({
     inset: '0',
     bg: 'rgba(0, 0, 0, 0.25)',
   },
+
+  '::-webkit-scrollbar': {
+    width: 4,
+  },
+
+  '::-webkit-scrollbar-thumb': {
+    bg: '#FFFFFF1A',
+    borderRadius: 4,
+  },
 })
 
 export default defineConfig({
@@ -186,6 +195,36 @@ export default defineConfig({
           '700': { value: '#3f3f46' },
           '800': { value: '#27272a' },
           '900': { value: '#18181b' },
+        },
+      },
+    },
+  },
+
+  patterns: {
+    extend: {
+      scrollable: {
+        description: 'A container that allows for scrolling',
+        properties: {
+          // The direction of the scroll
+          direction: { type: 'enum', value: ['horizontal', 'vertical'] },
+          // Whether to hide the scrollbar
+          hideScrollbar: { type: 'boolean' },
+        },
+        // disallow the `overflow` property (in TypeScript)
+        blocklist: ['overflow'],
+        transform(props: any) {
+          const { direction, hideScrollbar, ...rest } = props
+          return {
+            overflow: 'auto',
+            height: direction === 'horizontal' ? '100%' : 'auto',
+            width: direction === 'vertical' ? '100%' : 'auto',
+            scrollbarWidth: hideScrollbar ? 'none' : 'auto',
+            WebkitOverflowScrolling: 'touch',
+            '&::-webkit-scrollbar': {
+              display: hideScrollbar ? 'none' : 'auto',
+            },
+            ...rest,
+          }
         },
       },
     },

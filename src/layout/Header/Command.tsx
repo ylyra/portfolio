@@ -47,15 +47,6 @@ const list = css({
   transition: '0.1s ease',
   transitionProperty: 'height',
   padding: '0 0.5rem 2.5rem',
-
-  '&::-webkit-scrollbar': {
-    width: 4,
-  },
-
-  '&::-webkit-scrollbar-thumb': {
-    bg: '#FFFFFF1A',
-    borderRadius: 4,
-  },
 })
 
 const group = css({
@@ -208,9 +199,9 @@ export function CommandBar({ onOpenChange, open }: Props) {
           ariaLabel: 'Go to Projects Page',
         },
         {
-          label: 'Uses',
-          value: 'Uses',
-          onSelect: () => handleChangePage('/uses'),
+          label: 'Configs',
+          value: 'Configs',
+          onSelect: () => handleChangePage('/configs'),
           shortcut: 'GU',
           ariaLabel: 'Go see what I use',
         },
@@ -226,8 +217,18 @@ export function CommandBar({ onOpenChange, open }: Props) {
       }
     }
 
-    document.addEventListener('keydown', down)
-    return () => document.removeEventListener('keydown', down)
+    const onExternalPress = () => {
+      console.log('external')
+      onOpenChange(!open)
+    }
+
+    window.addEventListener('keydown', down)
+    window.addEventListener('cmdk:external', onExternalPress)
+
+    return () => {
+      window.removeEventListener('keydown', down)
+      window.removeEventListener('cmdk:external', onExternalPress)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

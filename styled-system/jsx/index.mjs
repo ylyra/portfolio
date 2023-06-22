@@ -17,3 +17,4 @@ export * from './wrap.mjs';
 export * from './container.mjs';
 export * from './divider.mjs';
 export * from './float.mjs';
+export * from './scrollable.mjs';

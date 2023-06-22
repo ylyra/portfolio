@@ -9,7 +9,7 @@ import { Command } from 'phosphor-react'
 import { useState } from 'react'
 import { CommandBar } from './Command'
 
-const items = ['About', 'Projects', 'Uses']
+const items = ['About', 'Projects', 'Configs']
 
 const navItem = cva({
   base: {
@@ -22,6 +22,7 @@ const navItem = cva({
     color: 'gray.500',
     transition: 'color 0.2s ease-in-out',
     willChange: 'color',
+    borderRadius: '0.5rem',
 
     _hover: {
       color: 'gray.200',

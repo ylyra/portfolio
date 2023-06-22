@@ -1,3 +1,3 @@
-export default function Uses() {
-  return <h1>Hello Uses</h1>
+export default function Projects() {
+  return <h1>Hello Projects</h1>
 }
