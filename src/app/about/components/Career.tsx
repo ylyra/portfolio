@@ -38,7 +38,7 @@ export const Career = () => {
       </styled.h2>
 
       <styled.ul mt={24} display="flex" flexDir="column" gap={32}>
-        {jobs.map((job, index) => (
+        {jobs.map((job) => (
           <styled.li key={job.id}>
             <styled.a
               href={job.companyUrl}
