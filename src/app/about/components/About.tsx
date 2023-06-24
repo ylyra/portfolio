@@ -8,10 +8,13 @@ export const About = () => {
       </styled.h2>
 
       <styled.p fontSize="1.25rem" color="gray.100" mt={16}>
-        Hello, my name is Yan and I am a web developer, and in the future.
-        Currently, I work with technologies such as JavaScript (TypeScript,
-        NodeJS, Electron, React, and React-Native), as well as the good old PHP
-        and MySQL.
+        As a mid-level fullstack developer, I bring expertise in frontend and
+        backend development to create outstanding web applications. With a
+        strong foundation in HTML, CSS, JavaScript, and various frameworks, I
+        specialize in crafting intuitive user experiences. From
+        conceptualization to deployment, I am dedicated to delivering
+        high-quality, scalable solutions. Explore my portfolio and let&apos;s
+        collaborate to turn your ideas into reality.
       </styled.p>
     </styled.section>
   )

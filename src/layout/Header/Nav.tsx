@@ -3,9 +3,9 @@
 import { css, cva } from '@/panda/css'
 import { styled } from '@/panda/jsx'
 import { motion } from 'framer-motion'
+import { Command } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Command } from 'phosphor-react'
 import { useState } from 'react'
 import { CommandBar } from './Command'
 
