@@ -7,7 +7,7 @@ import { Nav } from './Nav'
 
 export const Header = () => {
   return (
-    <styled.header py={16} position="sticky" top={0}>
+    <styled.header py={16} position="sticky" top={0} zIndex={999}>
       <Container
         bg="hsla(0,0%,100%,.03)"
         borderRadius={8}

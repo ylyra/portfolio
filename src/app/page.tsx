@@ -1,5 +1,6 @@
 import { HomePressButton } from '@/components/HomePressButton'
 import { Playlist } from '@/components/Playlist'
+import { ShimmeredPlaylist } from '@/components/Playlist/ShimmeredPlaylist'
 import { styled } from '@/panda/jsx'
 import { Suspense } from 'react'
 
@@ -37,8 +38,8 @@ export default function Home() {
         <HomePressButton />
       </section>
 
-      <styled.section mt="2rem">
-        <Suspense>
+      <styled.section mt="2rem" width="100%">
+        <Suspense fallback={<ShimmeredPlaylist />}>
           <Playlist />
         </Suspense>
       </styled.section>

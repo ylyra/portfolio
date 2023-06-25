@@ -60,6 +60,12 @@ const globalCss = defineGlobalStyles({
       color: 'gray.400 !important',
     },
   },
+
+  '.shiki': {
+    padding: '1rem',
+    border: '1px solid #FFFFFF1A',
+    borderRadius: 4,
+  },
 })
 
 export default defineConfig({
@@ -93,6 +99,14 @@ export default defineConfig({
           '50%': {
             left: '102%',
             transform: 'translateX(-100%)',
+          },
+        },
+        shimmer: {
+          '0%': {
+            backgroundPosition: '-400px 0',
+          },
+          '100%': {
+            backgroundPosition: '400px 0',
           },
         },
       },
