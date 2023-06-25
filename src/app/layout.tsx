@@ -30,6 +30,7 @@ export default function RootLayout({
             display: 'flex',
             flexDirection: 'column',
             minHeight: '100vh',
+            paddingBottom: '4rem',
           }),
           montserrat.variable,
         ].join(' ')}
