@@ -16,7 +16,7 @@ export default function Home() {
           Yan Lyra
         </styled.h1>
         <styled.p px="0.5rem">
-          Senior full-stack at{' '}
+          Senior Full-Stack at{' '}
           <styled.a
             color="emerald.400"
             transition="color 0.2s ease-in-out"
