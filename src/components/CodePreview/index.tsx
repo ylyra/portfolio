@@ -23,7 +23,15 @@ export function CodePreview({ code, raw }: CodePreviewProps) {
     setCopiedToClipboard(true)
     setTimeout(() => setCopiedToClipboard(false), 2000)
 
-    toast.success('Copied to clipboard')
+    toast.success('Copied to clipboard.', {
+      style: {
+        background: '#18181b',
+        color: '#fff',
+        fontSize: '0.75rem',
+      },
+      duration: 300000,
+      className: 'toast',
+    })
   }
 
   return (
