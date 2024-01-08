@@ -3,7 +3,7 @@ import { styled } from '@/panda/jsx'
 const jobs = [
   {
     id: 'a4d64e7e-ace5-4a91-aaae-1fe7ad3fb317',
-    title: 'Mid-level FullStack Developer',
+    title: 'Sr. FullStack Developer',
     company: 'Growth',
     companyUrl: 'https://growth.sale',
     location: 'Hybrid',
