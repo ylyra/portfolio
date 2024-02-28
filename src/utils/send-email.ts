@@ -17,7 +17,7 @@ export const sendEmail = async ({ email, message, name }: Props) => {
   email = sanitize(email)
   name = sanitize(name)
 
-  await resend.sendEmail({
+  await resend.emails.send({
     from: process.env.RESEND_FROM!,
     to: process.env.RECEIVER_EMAIL!,
     subject: `${name} - via yanlyra.dev`,
