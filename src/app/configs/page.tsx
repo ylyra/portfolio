@@ -6,8 +6,6 @@ import { Extensions } from './components/Extensions'
 export default function Configs() {
   return (
     <styled.main display="flex" flexDir="column" gap={64}>
-      <styled.h1>Configs</styled.h1>
-
       <styled.section display="flex" flexDir="column" gap={32}>
         <styled.h2 fontSize="2rem" color="gray.100" mb={12} fontWeight="bold">
           Dev Environment
