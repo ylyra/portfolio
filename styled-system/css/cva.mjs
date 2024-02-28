@@ -30,7 +30,7 @@ export function cva(config) {
 
   return Object.assign(cvaFn, {
     __cva__: true,
-    variantMap,
+    variants: variantMap,
     variantKeys,
     resolve,
     config,

@@ -1,6 +1,4 @@
-import { css } from '@/panda/css'
 import { styled } from '@/panda/jsx'
-import Link from 'next/link'
 
 const freelas = [
   {

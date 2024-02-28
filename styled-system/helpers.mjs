@@ -7,7 +7,7 @@ function isObject(value) {
 var newRule = /(?:([\u0080-\uFFFF\w-%@]+) *:? *([^{;]+?);|([^;}{]*?) *{)|(}\s*)/g;
 var ruleClean = /\/\*[^]*?\*\/|\s\s+|\n/g;
 var astish = (val, tree = [{}]) => {
-  const block = newRule.exec((val ?? "").replace(ruleClean, ""));
+  const block = newRule.exec(val.replace(ruleClean, ""));
   if (!block)
     return tree[0];
   if (block[4])
@@ -79,7 +79,6 @@ function mergeProps(...sources) {
 }
 
 // src/walk-object.ts
-var isNotNullish = (element) => element != null;
 function walkObject(target, predicate, options = {}) {
   const { stop, getKey } = options;
   function inner(value, path = []) {
@@ -91,10 +90,7 @@ function walkObject(target, predicate, options = {}) {
         if (stop?.(value, childPath)) {
           return predicate(value, path);
         }
-        const next = inner(child, childPath);
-        if (isNotNullish(next)) {
-          result[key] = next;
-        }
+        result[key] = inner(child, childPath);
       }
       return result;
     }
