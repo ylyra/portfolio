@@ -11,7 +11,7 @@ export async function GistContent({ gistUrl }: GistContentProps) {
 
   const code = await codeToHtml(settings, {
     lang: 'json',
-    theme: 'ayu-dark'
+    theme: 'ayu-dark',
   })
 
   return <CodePreview code={code} raw={settings} />
