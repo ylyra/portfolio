@@ -133,20 +133,7 @@ export default function Projects() {
           display="block"
           textAlign="center"
         >
-          Still triying to contribute more to the open-source community. You can
-          invite me to contribute to your project on{' '}
-          <Link
-            className={css({
-              fontSize: '0.875rem',
-              color: 'emerald.400',
-              '&:hover': {
-                color: 'emerald.500',
-              },
-            })}
-            href="/contact"
-          >
-            here
-          </Link>
+          Still triying to contribute more to the open-source community.
         </styled.small>
       </styled.section>
     </styled.main>
