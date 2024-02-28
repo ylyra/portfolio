@@ -1,10 +1,10 @@
-import { mapObject, __spreadValues, __objRest } from '../helpers.mjs';
+import { getPatternStyles, patternFns } from '../helpers.mjs';
 import { css } from '../css/index.mjs';
 
 const scrollableConfig = {
 transform(props) {
-  const _a = props, { direction, hideScrollbar } = _a, rest = __objRest(_a, ["direction", "hideScrollbar"]);
-  return __spreadValues({
+  const { direction, hideScrollbar, ...rest } = props;
+  return {
     overflow: "auto",
     height: direction === "horizontal" ? "100%" : "auto",
     width: direction === "vertical" ? "100%" : "auto",
@@ -12,10 +12,15 @@ transform(props) {
     WebkitOverflowScrolling: "touch",
     "&::-webkit-scrollbar": {
       display: hideScrollbar ? "none" : "auto"
-    }
-  }, rest);
+    },
+    ...rest
+  };
 }}
 
-export const getScrollableStyle = (styles = {}) => scrollableConfig.transform(styles, { map: mapObject })
+export const getScrollableStyle = (styles = {}) => {
+  const _styles = getPatternStyles(scrollableConfig, styles)
+  return scrollableConfig.transform(_styles, patternFns)
+}
 
 export const scrollable = (styles) => css(getScrollableStyle(styles))
+scrollable.raw = getScrollableStyle

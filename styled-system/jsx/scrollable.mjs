@@ -1,9 +1,14 @@
 import { createElement, forwardRef } from 'react'
-import { styled } from './factory.mjs';
+import { mergeCss } from '../css/css.mjs';
+import { splitProps } from '../helpers.mjs';
 import { getScrollableStyle } from '../patterns/scrollable.mjs';
+import { styled } from './factory.mjs';
 
-export const Scrollable = forwardRef(function Scrollable(props, ref) {
-  const { direction, hideScrollbar, ...restProps } = props
-const styleProps = getScrollableStyle({direction, hideScrollbar})
-return createElement(styled.div, { ref, ...styleProps, ...restProps })
-})    
+export const Scrollable = /* @__PURE__ */ forwardRef(function Scrollable(props, ref) {
+  const [patternProps, restProps] = splitProps(props, ["direction","hideScrollbar"])
+
+const styleProps = getScrollableStyle(patternProps)
+const mergedProps = { ref, ...styleProps, ...restProps }
+
+return createElement(styled.div, mergedProps)
+  })

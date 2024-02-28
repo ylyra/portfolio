@@ -1,10 +1,11 @@
 /* eslint-disable */
 import type { ConditionalValue } from './conditions';
-import type { CssProperties } from './system-types'
-import type { Tokens } from '../tokens'
+import type { CssProperties } from './system-types';
+import type { Tokens } from '../tokens/index';
 
-type PropertyValueTypes  = {
-	aspectRatio: "auto" | "square" | "landscape" | "portrait" | "wide" | "ultrawide" | "golden";
+interface PropertyValueTypes {
+	aspectRatio: Tokens["aspectRatios"];
+	zIndex: Tokens["zIndex"];
 	top: Tokens["spacing"];
 	left: Tokens["spacing"];
 	insetInline: Tokens["spacing"];
@@ -16,8 +17,6 @@ type PropertyValueTypes  = {
 	insetInlineStart: Tokens["spacing"];
 	right: Tokens["spacing"];
 	bottom: Tokens["spacing"];
-	insetX: Tokens["spacing"] | CssProperties["insetInline"];
-	insetY: Tokens["spacing"] | CssProperties["insetBlock"];
 	float: "left" | "right" | "start" | "end";
 	hideFrom: Tokens["breakpoints"];
 	hideBelow: Tokens["breakpoints"];
@@ -57,6 +56,7 @@ type PropertyValueTypes  = {
 	marginInline: "auto" | Tokens["spacing"];
 	marginInlineEnd: "auto" | Tokens["spacing"];
 	marginInlineStart: "auto" | Tokens["spacing"];
+	outlineWidth: Tokens["borderWidths"];
 	outlineColor: Tokens["colors"];
 	outline: Tokens["borders"];
 	outlineOffset: Tokens["spacing"];
@@ -87,6 +87,7 @@ type PropertyValueTypes  = {
 	textEmphasisColor: Tokens["colors"];
 	textIndent: Tokens["spacing"];
 	textShadow: Tokens["shadows"];
+	textShadowColor: Tokens["colors"];
 	textWrap: "wrap" | "balance" | "nowrap";
 	truncate: boolean;
 	listStyleImage: Tokens["assets"];
@@ -114,6 +115,11 @@ type PropertyValueTypes  = {
 	borderEndEndRadius: Tokens["radii"];
 	borderEndRadius: Tokens["radii"] | CssProperties["borderRadius"];
 	border: Tokens["borders"];
+	borderWidth: Tokens["borderWidths"];
+	borderTopWidth: Tokens["borderWidths"];
+	borderLeftWidth: Tokens["borderWidths"];
+	borderRightWidth: Tokens["borderWidths"];
+	borderBottomWidth: Tokens["borderWidths"];
 	borderColor: Tokens["colors"];
 	borderInline: Tokens["borders"];
 	borderInlineWidth: Tokens["borderWidths"];
@@ -124,10 +130,12 @@ type PropertyValueTypes  = {
 	borderLeft: Tokens["borders"];
 	borderLeftColor: Tokens["colors"];
 	borderInlineStart: Tokens["borders"];
+	borderInlineStartWidth: Tokens["borderWidths"];
 	borderInlineStartColor: Tokens["colors"];
 	borderRight: Tokens["borders"];
 	borderRightColor: Tokens["colors"];
 	borderInlineEnd: Tokens["borders"];
+	borderInlineEndWidth: Tokens["borderWidths"];
 	borderInlineEndColor: Tokens["colors"];
 	borderTop: Tokens["borders"];
 	borderTopColor: Tokens["colors"];
@@ -137,6 +145,7 @@ type PropertyValueTypes  = {
 	borderBlockEndColor: Tokens["colors"];
 	borderBlockStart: Tokens["borders"];
 	borderBlockStartColor: Tokens["colors"];
+	opacity: Tokens["opacity"];
 	boxShadow: Tokens["shadows"];
 	boxShadowColor: Tokens["colors"];
 	filter: "auto";
@@ -150,19 +159,18 @@ type PropertyValueTypes  = {
 	transitionTimingFunction: Tokens["easings"];
 	transitionDelay: Tokens["durations"];
 	transitionDuration: Tokens["durations"];
-	transitionProperty: "all" | "none" | "opacity" | "shadow" | "transform" | "base" | "background" | "colors";
+	transition: "all" | "common" | "background" | "colors" | "opacity" | "shadow" | "transform";
 	animation: Tokens["animations"];
+	animationName: Tokens["animationName"];
 	animationDelay: Tokens["durations"];
 	scale: "auto" | CssProperties["scale"];
 	translate: "auto" | CssProperties["translate"];
-	translateX: Tokens["spacing"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full";
-	translateY: Tokens["spacing"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full";
+	translateX: Tokens["spacing"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full" | "-1/2" | "-1/3" | "-2/3" | "-1/4" | "-2/4" | "-3/4" | "-full";
+	translateY: Tokens["spacing"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full" | "-1/2" | "-1/3" | "-2/3" | "-1/4" | "-2/4" | "-3/4" | "-full";
 	accentColor: Tokens["colors"];
 	caretColor: Tokens["colors"];
 	scrollbar: "visible" | "hidden";
 	scrollMargin: Tokens["spacing"];
-	scrollMarginX: Tokens["spacing"] | CssProperties["scrollMarginInline"];
-	scrollMarginY: Tokens["spacing"] | CssProperties["scrollMarginBlock"];
 	scrollMarginLeft: Tokens["spacing"];
 	scrollMarginRight: Tokens["spacing"];
 	scrollMarginTop: Tokens["spacing"];
@@ -180,8 +188,6 @@ type PropertyValueTypes  = {
 	scrollPaddingInline: Tokens["spacing"];
 	scrollPaddingInlineEnd: Tokens["spacing"];
 	scrollPaddingInlineStart: Tokens["spacing"];
-	scrollPaddingX: Tokens["spacing"] | CssProperties["scrollPaddingInline"];
-	scrollPaddingY: Tokens["spacing"] | CssProperties["scrollPaddingBlock"];
 	scrollPaddingLeft: Tokens["spacing"];
 	scrollPaddingRight: Tokens["spacing"];
 	scrollPaddingTop: Tokens["spacing"];
@@ -195,8 +201,10 @@ type PropertyValueTypes  = {
 	scrollSnapMarginRight: Tokens["spacing"];
 	fill: Tokens["colors"];
 	stroke: Tokens["colors"];
+	strokeWidth: Tokens["borderWidths"];
 	srOnly: boolean;
 	debug: boolean;
+	containerName: Tokens["containerNames"] | CssProperties["containerName"];
 	colorPalette: "purple" | "violet" | "indigo" | "teal" | "emerald" | "green" | "yellow" | "red" | "gray";
 	textStyle: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl";
 }
@@ -207,9 +215,11 @@ type PropertyValueTypes  = {
 
   type Shorthand<T> = T extends keyof PropertyValueTypes ? PropertyValueTypes[T] | CssValue<T> : CssValue<T>
 
-  export type PropertyTypes = PropertyValueTypes & {
+  export interface PropertyTypes extends PropertyValueTypes {
   
 	pos: Shorthand<"position">;
+	insetX: Shorthand<"insetInline">;
+	insetY: Shorthand<"insetBlock">;
 	insetEnd: Shorthand<"insetInlineEnd">;
 	end: Shorthand<"insetInlineEnd">;
 	insetStart: Shorthand<"insetInlineStart">;
@@ -251,6 +261,7 @@ type PropertyValueTypes  = {
 	h: Shorthand<"height">;
 	minH: Shorthand<"minHeight">;
 	maxH: Shorthand<"maxHeight">;
+	textShadowColor: Shorthand<"textShadowColor">;
 	bgPosition: Shorthand<"backgroundPosition">;
 	bgPositionX: Shorthand<"backgroundPositionX">;
 	bgPositionY: Shorthand<"backgroundPositionY">;
@@ -286,17 +297,116 @@ type PropertyValueTypes  = {
 	borderYWidth: Shorthand<"borderBlockWidth">;
 	borderYColor: Shorthand<"borderBlockColor">;
 	borderStart: Shorthand<"borderInlineStart">;
+	borderStartWidth: Shorthand<"borderInlineStartWidth">;
 	borderStartColor: Shorthand<"borderInlineStartColor">;
 	borderEnd: Shorthand<"borderInlineEnd">;
+	borderEndWidth: Shorthand<"borderInlineEndWidth">;
 	borderEndColor: Shorthand<"borderInlineEndColor">;
 	shadow: Shorthand<"boxShadow">;
 	shadowColor: Shorthand<"boxShadowColor">;
 	x: Shorthand<"translateX">;
 	y: Shorthand<"translateY">;
+	scrollMarginY: Shorthand<"scrollMarginBlock">;
+	scrollMarginX: Shorthand<"scrollMarginInline">;
+	scrollPaddingY: Shorthand<"scrollPaddingBlock">;
+	scrollPaddingX: Shorthand<"scrollPaddingInline">;
 }
 
+type StrictableProps =
+  | 'alignContent'
+  | 'alignItems'
+  | 'alignSelf'
+  | 'all'
+  | 'animationComposition'
+  | 'animationDirection'
+  | 'animationFillMode'
+  | 'appearance'
+  | 'backfaceVisibility'
+  | 'backgroundAttachment'
+  | 'backgroundClip'
+  | 'borderCollapse'
+  | 'border'
+  | 'borderBlock'
+  | 'borderBlockEnd'
+  | 'borderBlockStart'
+  | 'borderBottom'
+  | 'borderInline'
+  | 'borderInlineEnd'
+  | 'borderInlineStart'
+  | 'borderLeft'
+  | 'borderRight'
+  | 'borderTop'
+  | 'borderBlockEndStyle'
+  | 'borderBlockStartStyle'
+  | 'borderBlockStyle'
+  | 'borderBottomStyle'
+  | 'borderInlineEndStyle'
+  | 'borderInlineStartStyle'
+  | 'borderInlineStyle'
+  | 'borderLeftStyle'
+  | 'borderRightStyle'
+  | 'borderTopStyle'
+  | 'boxDecorationBreak'
+  | 'boxSizing'
+  | 'breakAfter'
+  | 'breakBefore'
+  | 'breakInside'
+  | 'captionSide'
+  | 'clear'
+  | 'columnFill'
+  | 'columnRuleStyle'
+  | 'contentVisibility'
+  | 'direction'
+  | 'display'
+  | 'emptyCells'
+  | 'flexDirection'
+  | 'flexWrap'
+  | 'float'
+  | 'fontKerning'
+  | 'forcedColorAdjust'
+  | 'isolation'
+  | 'lineBreak'
+  | 'mixBlendMode'
+  | 'objectFit'
+  | 'outlineStyle'
+  | 'overflow'
+  | 'overflowX'
+  | 'overflowY'
+  | 'overflowBlock'
+  | 'overflowInline'
+  | 'overflowWrap'
+  | 'pointerEvents'
+  | 'position'
+  | 'resize'
+  | 'scrollBehavior'
+  | 'touchAction'
+  | 'transformBox'
+  | 'transformStyle'
+  | 'userSelect'
+  | 'visibility'
+  | 'wordBreak'
+  | 'writingMode'
+
+type WithEscapeHatch<T> = T | `[${string}]`
+
+type FilterVagueString<Key, Value> = Value extends boolean
+  ? Value
+  : Key extends StrictableProps
+    ? Value extends `${infer _}` ? Value : never
+    : Value
+
+type PropOrCondition<Key, Value> = ConditionalValue<Value | (string & {})>
+
+type PropertyTypeValue<T extends string> = T extends keyof PropertyTypes
+  ? PropOrCondition<T, PropertyTypes[T] | CssValue<T>>
+  : never;
+
+type CssPropertyValue<T extends string> = T extends keyof CssProperties
+  ? PropOrCondition<T, CssProperties[T]>
+  : never;
+
 export type PropertyValue<T extends string> = T extends keyof PropertyTypes
-  ? ConditionalValue<PropertyTypes[T] | CssValue<T>>
+  ? PropertyTypeValue<T>
   : T extends keyof CssProperties
-  ? ConditionalValue<CssProperties[T]>
-  : ConditionalValue<string | number>
+    ? CssPropertyValue<T>
+    : PropOrCondition<T, string | number>
