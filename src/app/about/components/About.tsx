@@ -8,7 +8,7 @@ export const About = () => {
       </styled.h2>
 
       <styled.p fontSize="1.25rem" color="gray.100" mt={16}>
-        As a mid-level fullstack developer, I bring expertise in frontend and
+        As a fullstack developer, I bring expertise in frontend and
         backend development to create outstanding web applications. With a
         strong foundation in HTML, CSS, JavaScript, and various frameworks, I
         specialize in crafting intuitive user experiences. From
