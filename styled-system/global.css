@@ -95,6 +95,6 @@
   input:focus, textarea:focus, button:focus, select:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.75);
+    box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.75);
     }
 }

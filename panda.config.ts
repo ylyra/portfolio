@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defineConfig, defineGlobalStyles } from '@pandacss/dev'
 
 const globalCss = defineGlobalStyles({
@@ -31,7 +32,7 @@ const globalCss = defineGlobalStyles({
   'input, textarea, button, select': {
     '&:focus': {
       outline: 'none',
-      boxShadow: '0 0 0 3px rgba(147, 197, 253, 0.75)',
+      boxShadow: '0 0 0 3px rgba(52, 211, 153, 0.75)',
     },
   },
 
