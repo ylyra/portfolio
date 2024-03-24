@@ -26,15 +26,15 @@ const freelas = [
   },
 ]
 
-const contributions = [
-  {
-    type: 'open-source',
-    name: 'axios/axios-docs',
-    description:
-      'Help the axios docs by translating it to pt-br, check all my contributions clicking in the name of the repo.',
-    url: 'https://github.com/axios/axios-docs/pulls?q=is%3Apr+is%3Aclosed+author%3Aylyra',
-  },
-]
+// const contributions = [
+//   {
+//     type: 'open-source',
+//     name: 'axios/axios-docs',
+//     description:
+//       'Help the axios docs by translating it to pt-br, check all my contributions clicking in the name of the repo.',
+//     url: 'https://github.com/axios/axios-docs/pulls?q=is%3Apr+is%3Aclosed+author%3Aylyra',
+//   },
+// ]
 
 export default function Projects() {
   return (
