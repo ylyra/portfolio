@@ -96,7 +96,7 @@ export default function Projects() {
         </styled.small>
       </styled.section>
 
-      <styled.section>
+      {/* <styled.section>
         <styled.h2 fontSize="2rem" color="gray.50" fontWeight="bold">
           Contributions
         </styled.h2>
@@ -133,7 +133,7 @@ export default function Projects() {
         >
           Still triying to contribute more to the open-source community.
         </styled.small>
-      </styled.section>
+      </styled.section> */}
     </styled.main>
   )
 }
