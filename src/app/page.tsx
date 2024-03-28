@@ -1,5 +1,4 @@
 import { HomePressButton } from '@/components/HomePressButton'
-import { Playlist } from '@/components/Playlist'
 import { styled } from '@/panda/jsx'
 
 export default function Home() {
@@ -35,8 +34,6 @@ export default function Home() {
 
         <HomePressButton />
       </section>
-
-      <Playlist />
     </styled.main>
   )
 }
