@@ -69,7 +69,7 @@ export const Nav = () => {
                   layoutId="navItemBg"
                   className={css({
                     position: 'absolute',
-                    background: '#4a4a4a66',
+                    background: '#09090b',
                     inset: 0,
                   })}
                   style={{

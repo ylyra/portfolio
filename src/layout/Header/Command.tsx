@@ -18,7 +18,7 @@ const dialog = css({
   transform: 'translateX(-50%)',
   maxW: 640,
   w: '100%',
-  bg: '#1c1c1c',
+  bg: '#09090b',
   borderRadius: 8,
   border: '1px solid #FFFFFF1A',
   // backdropFilter: 'blur(8px)',
@@ -76,12 +76,12 @@ const item = css({
   gap: 8,
   padding: '0 0.5rem',
   userSelect: 'none',
-  willChange: 'background-color',
-  transition: 'all .15s ease-in-out',
-  transitionProperty: 'none',
+  willChange: 'background',
+  transition: 'all .3s ease-in-out',
+  bg: 'transparent',
 
   '&[data-selected=true]': {
-    bg: '#282828',
+    bg: '#18181b',
     color: '#ededed',
   },
 
