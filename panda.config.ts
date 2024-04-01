@@ -220,7 +220,7 @@ export default defineConfig({
           '600': { value: '#52525b' },
           '700': { value: '#3f3f46' },
           '800': { value: '#27272a' },
-          '900': { value: '#18181b' },
+          '900': { value: '#09090b' },
         },
       },
     },
