@@ -11,6 +11,38 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
+    id: '55edb670-22d9-413d-9414-5b81c3f8c6cd',
+    name: 'NLW Unite - ReactNative (Expo)',
+    certifier: 'Rocketseat',
+    file: 'https://utfs.io/f/7766dc09-ac26-4226-bee6-568ed6a27aab-6nn6sb.pdf',
+    language: 'en',
+    participation: true,
+  },
+  {
+    id: '55edb670-22d9-413d-9414-5b81c3f8c6cd',
+    name: 'NLW Unite - React',
+    certifier: 'Rocketseat',
+    file: 'https://utfs.io/f/85db95a4-452f-4e97-8086-9ea032ed7f28-fbt58f.pdf',
+    language: 'en',
+    participation: true,
+  },
+  {
+    id: '55edb670-22d9-413d-9414-5b81c3f8c6cd',
+    name: 'NLW Unite - Node',
+    certifier: 'Rocketseat',
+    file: 'https://utfs.io/f/a1149ff8-4e50-4bd1-8c73-dd3af06bdf0f-2s80jm.pdf',
+    language: 'en',
+    participation: true,
+  },
+  {
+    id: '55edb670-22d9-413d-9414-5b81c3f8c6cd',
+    name: 'NLW Unite - DevOps',
+    certifier: 'Rocketseat',
+    file: 'https://utfs.io/f/6a08e85c-daec-45e3-ad0e-0d9cd861af7a-snxxhf.pdf',
+    language: 'en',
+    participation: true,
+  },
+  {
     id: '52f68508-c53e-4279-b7ba-f98cc745b280',
     name: 'Type Transformations',
     certifier: 'TotalTypescript',
@@ -89,46 +121,57 @@ export default function Page() {
           Certifications
         </styled.h2>
 
-        <styled.ul
-          mt={24}
-          display="grid"
-          lg={{
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          }}
-          gap={12}
-        >
-          {certifications.map((freela) => (
-            <styled.li key={freela.id}>
+        <styled.ul mt={24} display="grid" gap={12}>
+          {certifications.map((certification) => (
+            <styled.li key={certification.id}>
               <styled.a
-                href={freela.file}
+                href={certification.file}
                 target="_blank"
-                display="flex"
                 rel="noopener noreferrer"
                 color="gray.50"
-                p="8"
+                py={8}
+                px={14}
                 border="1px solid"
                 borderColor="emerald.800"
                 rounded="4"
                 transition="all 0.2s ease-in-out"
                 _hover={{
                   borderColor: 'emerald.500',
+                  background: 'rgba(16, 185, 129, 0.05)',
                 }}
-                alignItems="center"
-                justifyContent="space-between"
-                gap={8}
+                display="flex"
+                flexDir="column"
+                gap={2}
+                className="group"
+                position="relative"
               >
-                <styled.div>
-                  <styled.p fontWeight="bold" color="gray.200">
-                    {freela.name}
-                  </styled.p>
-                  <styled.p fontSize="14px" color="gray.400">
-                    {freela.certifier}
-                  </styled.p>
-                </styled.div>
+                <styled.p
+                  fontWeight="bold"
+                  color="emerald.400"
+                  fontSize={16}
+                  display="flex"
+                  alignItems="center"
+                  gap={4}
+                  _groupHover={{
+                    color: 'emerald.500',
+                  }}
+                >
+                  {certification.name}
 
-                <styled.p fontSize="14px" color="gray.400">
-                  {languages[freela.language]}
+                  <styled.span fontSize={12} color="gray.400">
+                    @ {certification.certifier}
+                  </styled.span>
                 </styled.p>
+
+                <styled.span fontSize={10} color="gray.200">
+                  Certificate in {languages[certification.language]}
+                </styled.span>
+
+                <styled.span fontSize={10} color="gray.400">
+                  {certification.participation
+                    ? 'Participation'
+                    : 'Certification'}
+                </styled.span>
               </styled.a>
             </styled.li>
           ))}

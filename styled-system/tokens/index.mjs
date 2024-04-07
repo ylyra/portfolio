@@ -356,7 +356,7 @@ const tokens = {
     "variable": "var(--colors-gray-800)"
   },
   "colors.gray.900": {
-    "value": "#18181b",
+    "value": "#09090b",
     "variable": "var(--colors-gray-900)"
   },
   "breakpoints.sm": {
