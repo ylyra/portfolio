@@ -20,6 +20,7 @@ export const sendEmail = async ({ email, message, name }: Props) => {
   await resend.emails.send({
     from: process.env.RESEND_FROM!,
     to: process.env.RECEIVER_EMAIL!,
+    reply_to: email,
     subject: `${name} - via yanlyra.dev`,
     react: ContactEmail({ email, message, name }),
   })
