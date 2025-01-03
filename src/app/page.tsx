@@ -24,9 +24,9 @@ export default function Home() {
             }}
             target="_blank"
             rel="noopener noreferrer"
-            href="https://growth.sale"
+            href="https://foozi.com.br"
           >
-            Growth
+            Foozi
           </styled.a>
         </styled.p>
 
