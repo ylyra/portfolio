@@ -2,6 +2,30 @@ import { styled } from '@/panda/jsx'
 
 const freelas = [
   {
+    name: 'Caturité Radio',
+    description:
+      'I was responsible for the development of the website of Caturité Radio, the website was developed using the Next.js framework, with an admin panel in the same project to manage the content.',
+    url: 'https://radio.yanlyra.dev',
+    languages: [
+      'Next.js',
+      'PostgreSQL',
+      'TailwindCSS',
+      'TypeScript',
+      'Better-Auth',
+      'Drizzle',
+      'Radix/Shadcn',
+      'Casl',
+      'Tanstack (Query, Table)',
+      'TipTap',
+      'Cmdk',
+      'Framer motion',
+      'Lucide',
+      'Git',
+      'GitHub',
+      'More...',
+    ],
+  },
+  {
     name: 'Diocese of Campina Grande',
     description:
       'I was responsible for the development of the website of the Diocese of Campina Grande, the website was developed using the Next.js framework and the content is managed by the simple admin panel created with PHP and MVC architecture.',

@@ -1,6 +1,7 @@
 'use client'
 
 import { css } from '@/panda/css'
+import { DialogTitle } from '@radix-ui/react-dialog'
 import { Command } from 'cmdk'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -135,6 +136,10 @@ const kbdContainer = css({
   },
 })
 
+const title = css({
+  srOnly: true,
+})
+
 export function CommandBar({ onOpenChange, open }: Props) {
   const [loading] = useState(false)
   const router = useRouter()
@@ -242,6 +247,7 @@ export function CommandBar({ onOpenChange, open }: Props) {
 
   return (
     <Command.Dialog className={dialog} open={open} onOpenChange={onOpenChange}>
+      <DialogTitle className={title}>Menu</DialogTitle>
       <div className={searchContainer}>
         <Command.Input
           placeholder="Type your search here..."

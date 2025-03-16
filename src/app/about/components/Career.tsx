@@ -2,13 +2,22 @@ import { styled } from '@/panda/jsx'
 
 const jobs = [
   {
+    id: '574b48e0-efe6-4ef1-9c2b-7e448c9a9a2c',
+    title: 'Sr. FullStack Developer',
+    company: 'Foozi',
+    companyUrl: 'https://foozi.com.br',
+    location: 'Home Office',
+    startDate: 'Dec. 2024',
+    endDate: 'Present',
+  },
+  {
     id: 'a4d64e7e-ace5-4a91-aaae-1fe7ad3fb317',
     title: 'Sr. FullStack Developer',
     company: 'Growth',
     companyUrl: 'https://growth.sale',
     location: 'Hybrid',
     startDate: 'Jul. 2022',
-    endDate: 'Present',
+    endDate: 'Dec. 2024',
   },
   {
     id: '9a3aedac-43ee-4a22-8232-cb620b68f4fe',

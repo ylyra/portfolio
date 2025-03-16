@@ -2,6 +2,7 @@
 function isObject(value) {
   return typeof value === "object" && value != null && !Array.isArray(value);
 }
+var isObjectOrArray = (obj) => typeof obj === "object" && obj !== null;
 
 // src/compact.ts
 function compact(value) {
@@ -64,8 +65,9 @@ var memo = (fn) => {
 
 // src/merge-props.ts
 function mergeProps(...sources) {
-  const objects = sources.filter(Boolean);
-  return objects.reduce((prev, obj) => {
+  return sources.reduce((prev, obj) => {
+    if (!obj)
+      return prev;
     Object.keys(obj).forEach((key) => {
       const prevValue = prev[key];
       const value = obj[key];
@@ -84,7 +86,7 @@ var isNotNullish = (element) => element != null;
 function walkObject(target, predicate, options = {}) {
   const { stop, getKey } = options;
   function inner(value, path = []) {
-    if (isObject(value) || Array.isArray(value)) {
+    if (isObjectOrArray(value)) {
       const result = {};
       for (const [prop, child] of Object.entries(value)) {
         const key = getKey?.(prop, child) ?? prop;
@@ -165,9 +167,9 @@ function createCss(context) {
     const normalizedObject = normalizeStyleObject(styleObject, context);
     const classNames = /* @__PURE__ */ new Set();
     walkObject(normalizedObject, (value, paths) => {
-      const important = isImportant(value);
       if (value == null)
         return;
+      const important = isImportant(value);
       const [prop, ...allConditions] = conds.shift(paths);
       const conditions = filterBaseConditions(allConditions);
       const transformed = utility.transform(prop, withoutImportant(sanitize(value)));
@@ -180,7 +182,7 @@ function createCss(context) {
   });
 }
 function compactStyles(...styles) {
-  return styles.filter((style) => isObject(style) && Object.keys(compact(style)).length > 0);
+  return styles.flat().filter((style) => isObject(style) && Object.keys(compact(style)).length > 0);
 }
 function createMergeCss(context) {
   function resolve(styles) {
@@ -229,7 +231,7 @@ var patternFns = {
   isCssUnit
 };
 var getPatternStyles = (pattern, styles) => {
-  if (!pattern.defaultValues)
+  if (!pattern?.defaultValues)
     return styles;
   const defaults = typeof pattern.defaultValues === "function" ? pattern.defaultValues(styles) : pattern.defaultValues;
   return Object.assign({}, defaults, compact(styles));
@@ -278,7 +280,15 @@ function splitProps(props, ...keys) {
 }
 
 // src/uniq.ts
-var uniq = (...items) => items.filter(Boolean).reduce((acc, item) => Array.from(/* @__PURE__ */ new Set([...acc, ...item])), []);
+var uniq = (...items) => {
+  const set = items.reduce((acc, currItems) => {
+    if (currItems) {
+      currItems.forEach((item) => acc.add(item));
+    }
+    return acc;
+  }, /* @__PURE__ */ new Set([]));
+  return Array.from(set);
+};
 export {
   compact,
   createCss,
