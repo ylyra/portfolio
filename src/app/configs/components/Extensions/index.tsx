@@ -11,7 +11,11 @@ export const Extensions = async () => {
         VSCode Extensions
       </styled.h3>
 
-      <styled.ul display="grid" gap="0.75rem" gridTemplateColumns="2">
+      <styled.ul
+        display="grid"
+        gap="0.75rem"
+        gridTemplateColumns="repeat(2, minmax(0, 1fr))"
+      >
         {extensions.map((e) => (
           <Suspense key={e.identifier.uuid} fallback={<ShimmerItem />}>
             <Extension extension={e.identifier.id} />
