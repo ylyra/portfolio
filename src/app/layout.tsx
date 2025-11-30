@@ -1,48 +1,29 @@
-import { Montserrat } from 'next/font/google'
-import './index.css'
+import { Geist, JetBrains_Mono } from "next/font/google";
+import type { PropsWithChildren } from "react";
+import "./globals.css";
 
-import { Container } from '@/components/Container'
-import { Header } from '@/layout/Header'
-import { css } from '@/panda/css'
-import { Toaster } from 'react-hot-toast'
+const fontSans = Geist({
+  variable: "--font-sans",
+  subsets: ["latin"],
+});
+
+const fontMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+});
 
 export const metadata = {
-  title: 'Yan Lyra - Full Stack Developer',
-  description: 'Full Stack Developer',
-}
+  title: "Yan Lyra | Software Engineer",
+  description:
+    "Portfolio of Yan Lyra, a software engineer with a passion for building web applications.",
+};
 
-const montserrat = Montserrat({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin-ext'],
-  variable: '--font-primary',
-})
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={[
-          css({
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100vh',
-            paddingBottom: '4rem',
-          }),
-          montserrat.variable,
-        ].join(' ')}
-      >
-        <Header />
-
-        <Container flex={1} display="flex" flexDir="column">
-          {children}
-        </Container>
-
-        <Toaster position="bottom-right" />
+    <html lang="en">
+      <body className={`${fontSans.variable} ${fontMono.variable} antialiased`}>
+        {children}
       </body>
     </html>
-  )
+  );
 }
