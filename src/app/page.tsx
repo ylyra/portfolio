@@ -1,6 +1,6 @@
 import {
-  WorkExperience,
   type ExperienceItemType,
+  WorkExperience,
 } from "@/components/work-experience";
 
 const WORK_EXPERIENCE: ExperienceItemType[] = [
@@ -73,7 +73,7 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
     id: "vanlb95ohggmq2jk678in06y",
     companyName: "Growth Venture",
     companyLogo:
-      "https://46g41g612x.ufs.sh/f/nRNuYSh7ziMIvaAghKmJrqf0Su95PjMXek1pKbmR3CGAZncO",
+      "https://46g41g612x.ufs.sh/f/nRNuYSh7ziMI3lleSj46F5VlIkhxOeH0GNTYLAMXaitSzn8f",
     positions: [
       {
         id: "81da36fe-21f7-440a-b593-8029310ca2c7",
