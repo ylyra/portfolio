@@ -1,8 +1,8 @@
-import { Geist, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Outfit } from "next/font/google";
 import type { PropsWithChildren } from "react";
 import "./globals.css";
 
-const fontSans = Geist({
+const fontSans = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
 });
@@ -21,7 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={`${fontSans.variable} ${fontMono.variable} antialiased`}>
+      <body
+        className={`${fontSans.variable} ${fontMono.variable} dark antialiased`}
+      >
         {children}
       </body>
     </html>

@@ -1,7 +1,10 @@
+import { AppleHelloEnglishEffect } from "@/components/ui/shadcn-io/apple-hello-effect";
+import { Particles } from "@/components/ui/shadcn-io/particles";
 import {
-  type ExperienceItemType,
   WorkExperience,
+  type ExperienceItemType,
 } from "@/components/work-experience";
+import { headers } from "next/headers";
 
 const WORK_EXPERIENCE: ExperienceItemType[] = [
   {
@@ -165,19 +168,54 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
   },
 ];
 
-export default function Home() {
-  return (
-    <main className="flex min-h-dvh flex-col items-center justify-center p-4">
-      <h1 className="mb-3 font-bold text-2xl text-muted-foreground/80">
-        Hello World! 👋
-      </h1>
+const linkedins = {
+  pt: "https://www.linkedin.com/in/ylyra/",
+  default: "https://www.linkedin.com/in/ylyra/?locale=en_US",
+};
 
-      <section className="w-full max-w-lg">
-        <WorkExperience
-          className="w-full rounded-lg border"
-          experiences={WORK_EXPERIENCE}
-        />
-      </section>
-    </main>
+export default async function Page() {
+  const h = await headers();
+  const lang = (h.get("accept-language")?.split(",")[0] || "en")
+    .toLocaleLowerCase()
+    .split("-")[0];
+  const linkedin =
+    linkedins[lang as keyof typeof linkedins] || linkedins.default;
+
+  return (
+    <>
+      <Particles
+        className="-z-1 absolute inset-0"
+        color="#ffffff"
+        ease={80}
+        quantity={260}
+        refresh
+      />
+      <main className="flex min-h-dvh flex-col items-center justify-center p-4">
+        <AppleHelloEnglishEffect className="mb-3 h-16" speed={1.1} />
+
+        <p className="mb-8 text-sm">
+          Contact me on{" "}
+          <a
+            className="inline-flex items-center gap-1 text-white/60 underline-offset-3 transition-colors duration-200 ease-linear hover:text-primary hover:underline"
+            href={linkedin}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+        </p>
+
+        <section className="w-full max-w-lg">
+          <h2 className="mb-1 text-center font-bold text-muted-foreground text-xl">
+            Work Experience
+          </h2>
+
+          <WorkExperience
+            className="w-full rounded-lg border"
+            experiences={WORK_EXPERIENCE}
+          />
+        </section>
+      </main>
+    </>
   );
 }
