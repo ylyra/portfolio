@@ -42,7 +42,7 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
     positions: [
       {
         id: "9a90cac3-a507-4e8a-94e1-876fdd22777b",
-        title: "Staff Software Engineer",
+        title: "Senior Software Engineer",
         employmentPeriod: "12.2024 — present",
         employmentType: "Full-time",
         icon: "code",
